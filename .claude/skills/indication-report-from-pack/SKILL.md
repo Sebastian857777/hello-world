@@ -365,10 +365,13 @@ decision-maker would act on over recital of detail, and introduce no claim not s
 
 Every pack citation that carries a quote or locator (per Step 2a) can be checked mechanically
 against the file it points to. Run the bundled verification script over the finished report
-and the pack:
+and the pack. The script ships inside this skill at `scripts/verify_citations.py`, relative to
+the skill's base directory (given to you at invocation as the "Base directory for this skill"
+line), so call it by that absolute path rather than assuming a `scripts/` folder in the
+working directory:
 
 ```bash
-python scripts/verify_citations.py {indication-slug}-indication-report.md {indication-slug}-evidence-pack
+python "<skill base directory>/scripts/verify_citations.py" {indication-slug}-indication-report.md {indication-slug}-evidence-pack
 ```
 
 It parses `(pack: ID, ...)` citations, resolves each ID to its file(s) via `MANIFEST.md`, and
